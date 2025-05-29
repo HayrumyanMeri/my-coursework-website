@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="css/styles.css">
+  <title>Details about cars</title>
+  <link rel="icon" type="image/x-icon" href="images/icons8-auto-32.png">
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="nav__header">
+          <div class="nav__logo">
+              <a href="index.html">AUTOZONE</a>
+          </div>
+          <div class="nav__menu__btn" id="menu-btn">
+              <i class="ri-menu-line"></i>
+          </div>
+      </div>
+      <ul class="nav__links" id="nav-links">
+          <li><a href="index.html#home">Home</a></li>
+          <li><a href="index.html#rent">Rent</a></li>
+          <li><a href="index.html#ride">Ride</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+      <div class="nav__btn">
+          <button class="btn" type="button" onclick="window.location.href='signup_in.html'">Get started</button>
+
+      </div>
+  </nav>
+  <div class="car-details">
+    <h1 id="car-name">Car Name</h1>
+    <img id="car-img" src="" alt="Car Image">
+    <p id="car-price">Price: </p>
+    <div id="car-description"></div> <!--  Added -->
+  </div>
+</header>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const slideIndex = parseInt(urlParams.get("slide"));
+
+    const cars = [
+      {
+        name: "Ford Explorer",
+        image: "images/select-1.png",
+        year: 2021,
+        transmission: "Automatic",
+        fuelType: "Gasoline",
+        mileage: "32,000 km",
+        pricePerDay: "$150/day",
+        color: "Black",
+        bodyType: "SUV",
+        driveType: "4WD",
+        engine: "2.3L EcoBoost I4",
+        enginePower: "300 hp",
+        status: "For Rent"
+      },
+      {
+        name: "Fiat Viaggio",
+        image: "images/select-2.png",
+        year: 2017,
+        transmission: "Manual",
+        fuelType: "Petrol",
+        mileage: "58,000 km",
+        pricePerDay: "$100/day",
+        color: "Silver",
+        bodyType: "Sedan",
+        driveType: "FWD",
+        engine: "1.4L Turbocharged I4",
+        enginePower: "120 hp",
+        status: "For Rent"
+      },
+      {
+        name: "BMW M3",
+        image: "images/select-3.png",
+        year: 2023,
+        transmission: "Automatic",
+        fuelType: "Petrol",
+        mileage: "12,500 km",
+        pricePerDay: "$130/day",
+        color: "Alpine White",
+        bodyType: "Sedan",
+        driveType: "RWD",
+        engine: "3.0L Twin-Turbo I6",
+        enginePower: "473 hp",
+        status: "For Rent"
+      },
+      {
+        name: "Volkswagen Atlas",
+        image: "images/select-4.png",
+        year: 2022,
+        transmission: "Automatic",
+        fuelType: "Gasoline",
+        mileage: "27,000 km",
+        pricePerDay: "$160/day",
+        color: "Deep Blue Pearl",
+        bodyType: "SUV",
+        driveType: "AWD",
+        engine: "3.6L V6",
+        enginePower: "276 hp",
+        status: "For Rent"
+      }
+    ];
+
+    if (!isNaN(slideIndex) && cars[slideIndex]) {
+      const car = cars[slideIndex];
+
+      document.getElementById("car-name").innerText = car.name;
+      document.getElementById("car-img").src = car.image;
+      document.getElementById("car-price").innerText = "Price per day: " + car.pricePerDay;
+
+      document.getElementById("car-description").innerHTML = `
+        <p><strong>Year:</strong> ${car.year}</p>
+        <p><strong>Transmission:</strong> ${car.transmission}</p>
+        <p><strong>Fuel Type:</strong> ${car.fuelType}</p>
+        <p><strong>Mileage:</strong> ${car.mileage}</p>
+        <p><strong>Drive Type:</strong> ${car.driveType}</p>
+        <p><strong>Body Type:</strong> ${car.bodyType}</p>
+        <p><strong>Engine:</strong> ${car.engine}</p>
+        <p><strong>Engine Power:</strong> ${car.enginePower}</p>
+        <p><strong>Status:</strong> ${car.status}</p>
+      `;
+    } else {
+      document.querySelector(".car-details").innerHTML = "<h2>Car not found!</h2>";
+    }
+  </script>
+</body>
+</html>
